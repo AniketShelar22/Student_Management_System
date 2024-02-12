@@ -1,4 +1,5 @@
-package core_Java_Project;
+package streamapi;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -98,11 +99,11 @@ public class StudentManagementSystem {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("/nWelcome to Student Management System");
+            System.out.println("\nWelcome to Student Management System\n");
             System.out.println("1. Student Login");
             System.out.println("2. Admin Login");
             System.out.println("3. Exit");
-            System.out.print("/nEnter your choice: ");
+            System.out.print("\nEnter your choice: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
@@ -117,7 +118,7 @@ public class StudentManagementSystem {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println("\nInvalid choice!");
             }
         }
     }
@@ -128,8 +129,8 @@ public class StudentManagementSystem {
 
         Student student = students.get(rollNumber);
         if (student != null) {
-            System.out.println("Login successful!");
-            System.out.println("Student Details: " + student);
+            System.out.println("\nLogin successful!");
+            System.out.println("\nStudent Details: " + student);
             // Additional student functionalities can be added here
         } else {
             System.out.println("Student not found!");
@@ -137,28 +138,28 @@ public class StudentManagementSystem {
     }
 
     private static void adminLogin(Scanner scanner) {
-        System.out.print("Enter username: ");
+        System.out.print("\nEnter username: ");
         String username = scanner.next();
         System.out.print("Enter password: ");
         String password = scanner.next();
 
         if (admin.authenticate(username, password)) {
-            System.out.println("Admin login successful!");
+            System.out.println("\nAdmin login successful!");
             adminMenu(scanner);
         } else {
-            System.out.println("Invalid credentials!");
+            System.out.println("\nInvalid credentials!");
         }
     }
 
     private static void adminMenu(Scanner scanner) {
         while (true) {
-            System.out.println("Admin Menu:");
+            System.out.println("\nAdmin Menu:");
             System.out.println("1. Add Student");
             System.out.println("2. View All Students");
             System.out.println("3. Edit Student Details");
             System.out.println("4. Delete Student");
             System.out.println("5. Logout");
-            System.out.print("Enter your choice: ");
+            System.out.print("\nEnter your choice: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
@@ -177,13 +178,13 @@ public class StudentManagementSystem {
                 case 5:
                     return;
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println("\nInvalid choice!");
             }
         }
     }
 
     private static void addStudent(Scanner scanner) {
-        System.out.print("Enter name: ");
+        System.out.print("\nEnter name: ");
         String name = scanner.next();
         System.out.print("Enter roll number: ");
         String rollNumber = scanner.next();
@@ -193,7 +194,7 @@ public class StudentManagementSystem {
         String email = scanner.next();
 
         students.put(rollNumber, new Student(name, rollNumber, age, email));
-        System.out.println("Student added successfully!");
+        System.out.println("\nStudent added successfully!");
     }
 
     private static void viewAllStudents() {
@@ -202,7 +203,7 @@ public class StudentManagementSystem {
     	        System.out.println(student);
     	    }
     	} else {
-    	    System.out.println("No student data available.");
+    	    System.out.println("\nNo student data available.");
     	}
 
 
@@ -215,18 +216,18 @@ public class StudentManagementSystem {
     }
 
     private static void editStudentDetails(Scanner scanner) {
-        System.out.print("Enter roll number of student to edit: ");
+        System.out.print("\nEnter roll number of student to edit: ");
         String rollNumber = scanner.next();
         Student student = students.get(rollNumber);
         
         while(true)
         {
-        	System.out.println("Select to edit Student detail:");
+        	System.out.println("\nSelect to edit Student detail:");
         	System.out.println("1.Name");
         	System.out.println("2.Age");
         	System.out.println("3.Email");
         	System.out.println("4.Exit");
-        	System.out.println("Enter your choice: ");
+        	System.out.println("\nEnter your choice: ");
             int choice = scanner.nextInt();
             
             switch (choice) {
@@ -235,20 +236,20 @@ public class StudentManagementSystem {
                     System.out.print("Enter new Name: ");
                     String newName = scanner.next();
                     student.setName(newName);
-                    System.out.println("Student details updated successfully!");
+                    System.out.println("\nStudent details updated successfully!");
                 } else {
-                    System.out.println("Student not found!");
+                    System.out.println("\nStudent not found!");
                 }          
             	
             	break;
             case 2:
             	if (student != null) {
-                    System.out.print("Enter new Age: ");
+                    System.out.print("\nEnter new Age: ");
                     int newAge = scanner.nextInt();
                     student.setAge(newAge);
-                    System.out.println("Student details updated successfully!");
+                    System.out.println("\nStudent details updated successfully!");
                 } else {
-                    System.out.println("Student not found!");
+                    System.out.println("\nStudent not found!");
                 }       
             	break;
             case 3:
@@ -256,9 +257,9 @@ public class StudentManagementSystem {
                     System.out.print("Enter new email: ");
                     String newEmail = scanner.next();
                     student.setEmail(newEmail);
-                    System.out.println("Student details updated successfully!");
+                    System.out.println("\nStudent details updated successfully!");
                 } else {
-                    System.out.println("Student not found!");
+                    System.out.println("\nStudent not found!");
                 }    
             	break;
             case 4:
@@ -281,15 +282,14 @@ public class StudentManagementSystem {
     }
 
     private static void deleteStudent(Scanner scanner) {
-        System.out.print("Enter roll number of student to delete: ");
+        System.out.print("\nEnter roll number of student to delete: ");
         String rollNumber = scanner.next();
         if (students.containsKey(rollNumber)) {
             students.remove(rollNumber);
-            System.out.println("Student deleted successfully!");
+            System.out.println("\nStudent deleted successfully!");
         } else {
-            System.out.println("Student not found!");
+            System.out.println("\nStudent not found!");
         }
     }
 }
-
 
